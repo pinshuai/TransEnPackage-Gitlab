@@ -1,0 +1,29 @@
+README.TXT
+
+This software package contains the routines needed to compute mutual information, transfer entropy, and significance thresholds. The routines need a wrapper to read in data and loop over pairs of variables of interest; a sample wrapper, called RunMetabolism.m is provided. It reads in data from one of the CSV files included.
+
+Code was developed by Laurel Larsen (laurel@berkeley.edu) for Larsen and Harvey, in review, "Disrupted carbon cycling in restored and unrestored urban streams: Critical timescales and controls," submitted to Limnology and Oceanography. Please cite this work accordingly in products that use this code.
+
+The transfer entropy routine is based on Ruddell and Kumar, 2009, "Ecohydrologic process networks: 1. Identification," Water Resources Research, 45, doi:10.1029/2008WR007279.
+
+Contents of the package include:
+AccDailyAll.csv: input dataset of long-term metabolism and gaging station record from Accotink Creek, VA.
+jointentropy.m: computes two-dimensional joint entropy distributions
+jointentropy3.m: computes three-dimensional joint entropy distributions
+LagData.m: shifts the columns of an n-column input matrix by a vector of specified lags
+license.txt: a Berkeley Software Distribution license for the code package (open-source, permissive)
+mutinfo_crit.m: calculates the significance threshold for mutual information
+mutinfo.m: calculates mutual information
+RunMetabolism.m: sample wrapper code. Start with this and modify it for your dataset!
+shuffle.m: randomly shuffles columns of an input matrix, keeping blanks blank
+transen_crit.m: calculates the significance threshold for transfer entropy
+transen.m: calculates the transfer entropy
+transenshuffle.m: called by transen_crit. Does most of the work of calculating the significance threshold
+UDRDailyAll.csv: input dataset of long-term metabolism and gaging station record from Upper Difficult Run, VA.
+
+
+All code is in Matlab and is commented. 
+
+Manipulations users might want to consider include:
+1) Conditioning the transfer entropy on lags other than tau. (Ruddell and Kumar, for instance, condition on the previous timestep.) To make this modification (e.g., by conditioning on the previous timestep), one would open transen.m and change the first line of code to: M4=LagData([M M(:,2)], [-lag 0 -1]). Second, one would open transenshuffle.m and change the first line of code to: M4=LagData([Minput Minput(:,2)], [0 0 -1]).
+2) Choosing an alternative normalization scheme (or no normalization scheme at all). T and I are normalized by the denominator of the penultimate line of transen.m, transenshuffle.m, and mutinfo.m. 
