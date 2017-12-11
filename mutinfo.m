@@ -9,7 +9,7 @@ function I = mutinfo(M, nbins)
 [~, ~, col1cat] = histcounts(M(:,1), nbins(2)); %Which bin the first data column is in
 [~,~,col2cat] = histcounts(M(:,2),nbins(2)); %Which bin the second data column is in
 col1cat(col2cat==0)=0; %If there is an NaN for any row, assign the other column in that row to the NaN bin too
-col2cat(col1cat==0)=0; %See comment above.
+col2cat(col1cat==0)=0; %See comment above (zero is the NaN bin)
 jointentcat = (col1cat-1)*nbins(2)+col2cat; %This classifies the joint entropy bin into a number between 1 and nbins^2. 0 is assigned to rows with misisng data.
 [N, ~] = histcounts(jointentcat, nbins(2)^2, 'BinLimits', [1, nbins(2)^2]); %Number of datapoints within each joint entropy bin. Verified.
 p = N/sum(N); %Vector of probabilities
