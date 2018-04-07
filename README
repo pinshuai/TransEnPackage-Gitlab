@@ -2,7 +2,7 @@ README.TXT
 
 This software package contains the routines needed to compute mutual information, transfer entropy, and significance thresholds. The routines need a wrapper to read in data and loop over pairs of variables of interest; a sample wrapper, called RunMetabolism.m is provided. It reads in data from one of the CSV files included.
 
-Code was developed by Laurel Larsen (laurel@berkeley.edu) for Larsen and Harvey, in review, "Disrupted carbon cycling in restored and unrestored urban streams: Critical timescales and controls," submitted to Limnology and Oceanography. Please cite this work accordingly in products that use this code.
+Code was developed by Laurel Larsen (laurel@berkeley.edu) for Larsen, L. G. and J. W. Harvey. 2017. Disrupted carbon cycling in restored and unrestored urban streams: Critical timescales and controls. Limnology and Oceanography, 62(Suppl. S1), S160-S182, doi: 10.1002/lno.10613. Please cite this work accordingly in products that use this code.
 
 The transfer entropy routine is based on Ruddell and Kumar, 2009, "Ecohydrologic process networks: 1. Identification," Water Resources Research, 45, doi:10.1029/2008WR007279.
 
